@@ -1,0 +1,358 @@
+:root {
+  --vp-c-brand-1: #2563eb;
+  --vp-c-brand-2: #1d4ed8;
+  --vp-c-brand-3: #1e40af;
+  --vp-c-brand-soft: #eff6ff;
+
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f8fafc;
+  --vp-c-bg-elv: #f1f5f9;
+
+  --vp-c-text-1: #0f172a;
+  --vp-c-text-2: #334155;
+  --vp-c-text-3: #64748b;
+
+  --vp-c-border: #e2e8f0;
+  --vp-c-divider: #f1f5f9;
+
+  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  --vp-font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+body {
+  font-family: var(--vp-font-family-base);
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 导航栏深度定制 */
+.VPNavBar {
+  border-bottom: 1px solid var(--vp-c-border) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.VPNavBarTitle .title {
+  font-weight: 700 !important;
+  font-size: 1.15rem !important;
+  letter-spacing: -0.02em;
+  color: #0f172a !important;
+}
+
+.VPNavBarTitle .logo {
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.VPHero .image-src {
+  border-radius: 20px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
+  max-width: 320px;
+  transition: transform 0.3s ease;
+}
+
+.VPHero .image-src:hover {
+  transform: translateY(-4px);
+}
+
+/* =====================================================================
+   全局 Markdown 表格与数据对比大表深度优化
+   解决多列大表在桌面/移动端表头竖直压缩换行、右侧截断的视觉缺陷
+   ===================================================================== */
+
+.vp-doc table,
+table {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  margin: 1.75rem 0 !important;
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--vp-c-border) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+  -webkit-overflow-scrolling: touch !important;
+  background-color: var(--vp-c-bg) !important;
+}
+
+/* 针对包裹容器提供原生滚动容器样式 */
+.tz-table-wrap,
+.table-wrap,
+.data-table-container {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin: 1.75rem 0 !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--vp-c-border) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+  background-color: var(--vp-c-bg) !important;
+}
+
+.tz-table-wrap table,
+.tz-data-table {
+  display: table !important;
+  width: 100% !important;
+  min-width: 960px !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 表头：坚决杜绝中文单字纵向折行压缩 */
+.vp-doc th,
+th {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  padding: 0.85rem 1.15rem !important;
+  border: 1px solid #e2e8f0 !important;
+  text-align: left !important;
+  white-space: nowrap !important; /* 关键排版保护：表头文字永不纵向折断 */
+  letter-spacing: 0.02em !important;
+  font-size: 0.9rem !important;
+}
+
+/* 单元格：保证充足呼吸感与可读性 */
+.vp-doc td,
+td {
+  padding: 0.85rem 1.15rem !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #334155 !important;
+  vertical-align: middle !important;
+  font-size: 0.88rem !important;
+  min-width: 120px !important; /* 保证每个指标列有基础舒适度 */
+}
+
+/* 首列品牌/方案名称加宽与加粗 */
+.vp-doc td:first-child,
+.vp-doc th:first-child,
+td:first-child,
+th:first-child {
+  min-width: 160px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+}
+
+/* 偶数行斑马纹 */
+.vp-doc tr:nth-child(even) td,
+tr:nth-child(even) td {
+  background-color: #fbfcfe !important;
+}
+
+/* 悬停高亮行 */
+.vp-doc tr:hover td,
+tr:hover td {
+  background-color: #eff6ff !important;
+  transition: background-color 0.15s ease !important;
+}
+
+/* 表格横向滚动条优雅美化 */
+.vp-doc table::-webkit-scrollbar,
+.tz-table-wrap::-webkit-scrollbar,
+.table-wrap::-webkit-scrollbar {
+  height: 6px !important;
+}
+
+.vp-doc table::-webkit-scrollbar-track,
+.tz-table-wrap::-webkit-scrollbar-track,
+.table-wrap::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+  border-radius: 4px !important;
+}
+
+.vp-doc table::-webkit-scrollbar-thumb,
+.tz-table-wrap::-webkit-scrollbar-thumb,
+.table-wrap::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+  border-radius: 4px !important;
+}
+
+.vp-doc table::-webkit-scrollbar-thumb:hover,
+.tz-table-wrap::-webkit-scrollbar-thumb:hover,
+.table-wrap::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
+}
+
+/* 暗色模式适配 */
+html.dark .vp-doc th,
+html.dark th {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+html.dark .vp-doc td,
+html.dark td {
+  background-color: #0f172a !important;
+  color: #cbd5e1 !important;
+  border-color: #334155 !important;
+}
+
+html.dark .vp-doc tr:nth-child(even) td,
+html.dark tr:nth-child(even) td {
+  background-color: #131d2e !important;
+}
+
+html.dark .vp-doc tr:hover td,
+html.dark tr:hover td {
+  background-color: #1e293b !important;
+}
+
+/* 转化按钮规范 */
+.aff-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #2563eb;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+}
+
+.aff-button-primary:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.aff-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #f1f5f9;
+  color: #1e293b !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  border: 1px solid #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.aff-button-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+/* 自定义徽标 */
+.badge-tag {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #dbeafe;
+}
+
+.badge-tag-warning {
+  background-color: #fffbeb;
+  color: #b45309;
+  border-color: #fef3c7;
+}
+
+.badge-tag-success {
+  background-color: #ecfdf5;
+  color: #047857;
+  border-color: #d1fae5;
+}
+
+/* 消除默认文档侧边栏造成的留白不均 */
+.VPContent.is-home {
+  padding: 0 !important;
+}
+
+/* 正文排版与中文字体微调 */
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.8 !important;
+  color: #334155;
+}
+
+.vp-doc h1 {
+  font-size: 2.1rem !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1.25rem !important;
+  color: #0f172a !important;
+  letter-spacing: -0.02em !important;
+}
+
+.vp-doc h2 {
+  font-size: 1.55rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.6rem !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.vp-doc h3 {
+  font-size: 1.22rem !important;
+  font-weight: 650 !important;
+  line-height: 1.5 !important;
+  margin-top: 1.85rem !important;
+  margin-bottom: 0.75rem !important;
+  color: #1e293b !important;
+}
+
+/* 引用块美化 */
+.vp-doc blockquote {
+  margin: 1.5rem 0 !important;
+  padding: 1rem 1.25rem !important;
+  border-left: 4px solid #2563eb !important;
+  background-color: #f8fafc !important;
+  border-radius: 0 8px 8px 0 !important;
+  color: #334155 !important;
+  font-size: 0.94rem !important;
+  line-height: 1.75 !important;
+}
+
+.vp-doc blockquote p {
+  margin: 0.4rem 0 !important;
+}
+
+/* 强调文字与粗体 */
+.vp-doc strong {
+  color: #0f172a !important;
+  font-weight: 650 !important;
+}
+
+/* 行内代码 */
+.vp-doc :not(pre) > code {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  padding: 0.2rem 0.45rem !important;
+  border-radius: 4px !important;
+  font-size: 0.88em !important;
+  font-weight: 500 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+@media (max-width: 768px) {
+  .vp-doc table,
+  table {
+    display: block !important;
+    overflow-x: auto !important;
+  }
+}

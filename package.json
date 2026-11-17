@@ -4,6 +4,7 @@
   "description": "机场vpn (jichangvpn.homes) - 中文机场与VPN专业评测媒体、品牌数据库与SEO/GEO商业转化平台",
   "type": "module",
   "scripts": {
+    "build": "npm run docs:build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs && npm run build:search",
     "docs:preview": "vitepress preview docs",
